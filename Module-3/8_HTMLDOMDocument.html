@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML DOM Document</title>
+  </head>
+  <body>
+    <h1>HTML DOM Document</h1>
+
+    <button id="myButton">Click Me</button>
+    <p id="myParagraph">Initial Text</p>
+
+    <script>
+      // Event listener for button click event
+      const button = document.getElementById("myButton");
+      const paragraph = document.getElementById("myParagraph");
+
+      button.addEventListener("click", () => {
+        paragraph.textContent = "Button Clicked!";
+      });
+    </script>
+  </body>
+</html>

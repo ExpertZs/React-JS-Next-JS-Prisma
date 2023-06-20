@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Common Events</title>
+  </head>
+  <body>
+    <h1>JS Common Events</h1>
+    <p>Click anywhere on the page to display coordinates (x, y).</p>
+    <p>Press any key on the keyboard to display the key code.</p>
+    <img id="myImage" src="image1.jpg" alt="Image" width="200" height="200" />
+
+    <script>
+      // Event listener for click event
+      document.addEventListener("click", (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+        alert(`Clicked at coordinates (x, y): (${x}, ${y})`);
+      });
+
+      // Event listener for keydown event
+      document.addEventListener("keydown", (event) => {
+        const keyCode = event.keyCode || event.which;
+        alert(`Pressed key with code: ${keyCode}`);
+      });
+
+      // Event listener for mouseover event on the image
+      const image = document.getElementById("myImage");
+      image.addEventListener("mouseover", () => {
+        image.src = "image2.jpg";
+      });
+    </script>
+  </body>
+</html>

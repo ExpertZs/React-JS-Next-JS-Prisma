@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Browser Info</title>
+    <script>
+      function getBrowserInfo() {
+        const userAgent = navigator.userAgent;
+
+        let browserName;
+        let browserVersion;
+
+        // Check for Chrome
+        if (userAgent.includes("Chrome")) {
+          const chromeRegex = /Chrome\/(\S+)/;
+          const match = userAgent.match(chromeRegex);
+          if (match) {
+            browserName = "Chrome";
+            browserVersion = match[1];
+          }
+        }
+        // Check for Firefox
+        else if (userAgent.includes("Firefox")) {
+          const firefoxRegex = /Firefox\/(\S+)/;
+          const match = userAgent.match(firefoxRegex);
+          if (match) {
+            browserName = "Firefox";
+            browserVersion = match[1];
+          }
+        }
+
+        return {
+          name: browserName,
+          version: browserVersion,
+        };
+      }
+
+      const browserInfo = getBrowserInfo();
+      console.log("Browser Name:", browserInfo.name);
+      console.log("Browser Version:", browserInfo.version);
+    </script>
+  </head>
+  <body>
+    <!-- Output will be displayed in the browser console -->
+  </body>
+</html>

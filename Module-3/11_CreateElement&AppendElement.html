@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Element & Append Element</title>
+  </head>
+  <body>
+    <h1>Create Element & Append Element</h1>
+
+    <ul id="myList"></ul>
+
+    <script>
+      const ul = document.getElementById("myList");
+
+      for (let i = 1; i <= 5; i++) {
+        const li = document.createElement("li");
+        li.textContent = i;
+        ul.appendChild(li);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Change Attribute Value</title>
+  </head>
+  <body>
+    <h1>DOM Change Attribute Value</h1>
+
+    <img id="myImage" src="image1.jpg" alt="Initial Image" />
+    <br />
+    <button onclick="changeImage()">Change Image</button>
+
+    <script>
+      function changeImage() {
+        const image = document.getElementById("myImage");
+        image.src = "image2.jpg";
+        image.alt = "New Image";
+      }
+    </script>
+  </body>
+</html>
