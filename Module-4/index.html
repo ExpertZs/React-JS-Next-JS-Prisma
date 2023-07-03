@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Product List</h1>
+      <ul id="product-list"></ul>
+
+      <h1>Shopping Cart</h1>
+      <div id="cart-items"></div>
+      <div id="discount-section">
+        <input
+          type="number"
+          id="discount-input"
+          placeholder="Enter discount percentage"
+        />
+        <button id="apply-discount">Apply Discount</button>
+      </div>
+      <div id="total-amount"></div>
+      <button id="clear-cart">Clear Cart</button>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
