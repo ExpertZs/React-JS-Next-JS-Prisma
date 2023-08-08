@@ -1,0 +1,38 @@
+my-app/
+|-- node_modules/
+|-- app/
+|   |-- page.js
+|   |-- layout.js
+|   |-- global.css
+|-- public/
+|   |-- images/
+|       |-- logo.png
+|-- components/
+|   |-- Header.js
+|   |-- Footer.js
+|-- package.json
+|-- tailwind.config.js
+|-- jsconfig.json
+|-- next.config.js
+|-- README.md
+
+
+Folder Structure Description:
+
+    node_modules/: This is where all the project's dependencies are stored. It's created and managed by Node.js and npm (Node Package Manager).
+
+    app/: This is a special folder in Next.js where you create your React components that act as your app's pages. The filenames correspond to the URLs of the pages. For example, page.js maps to the homepage, about.js to the about page, and so on. And also here you can store your global stylesheets, like CSS or Sass files, that apply styles to your entire application.
+
+    public/: This folder is used to store static assets that you want to make available directly via URLs. For example, images, fonts, etc. The contents of this folder are served from the root of your app.
+
+    public/images/: A subfolder within the public directory to store images.
+
+    components/: This is where you can store your reusable React components. These components can be used across different pages.
+
+    package.json: This file contains metadata about the project, as well as a list of the project's dependencies and scripts.
+
+    tailwind.config.js: This file contains information about tailwind configuration of the project.
+
+    next.config.js: This file will contains information about configuration of the project.
+
+    README.md: This is a markdown file where you can include documentation and instructions for your project.
