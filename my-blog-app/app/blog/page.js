@@ -1,5 +1,10 @@
 import Link from 'next/link';
-import { blogData } from '../data/blogData.json';
+
+const blogData = [
+  { id: '1', title: 'First Post' },
+  { id: '2', title: 'Second Post' },
+  { id: '3', title: 'Third Post' },
+];
 
 const Blog = () => {
   return (
@@ -8,7 +13,7 @@ const Blog = () => {
       <ul>
         {blogData.map((post) => (
           <li key={post.id}>
-            <Link href={`/post/${post.id}`}>
+            <Link href={`../post/${post.id}`}>
               <a>{post.title}</a>
             </Link>
           </li>

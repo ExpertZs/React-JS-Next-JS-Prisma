@@ -1,20 +1,20 @@
 import { useRouter } from 'next/router';
-import { blogData } from '../../data/blogData.json';
+import blogData from '../../data/blogData.json';
 
 const Post = () => {
   const router = useRouter();
-  const postId = router.query.id;
-  const post = blogData.find((post) => post.id === postId);
+  const { id } = router.query;
+  const post = blogData.find((post) => post.id === id);
 
   if (!post) {
-    return <div>Post not found</div>;
+    return <p>Post not found.</p>;
   }
 
   return (
     <div>
       <h1>{post.title}</h1>
       <p>{post.content}</p>
-      <p>Date: {post.date}</p>
+      <p>Published on: {post.date}</p>
     </div>
   );
 };
