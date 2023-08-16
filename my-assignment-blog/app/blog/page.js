@@ -28,8 +28,8 @@ const Blog = () => {
         <h1 className="mb-10 fontbold text-lg inline-block bg-blue-700 text-white font-bold p-2">Blog</h1>
         <ul>
           {posts.map((post) => (
-            <li className="underline mb-5 underline-offset-4" key={post.id}>
-              <Link href={`/blog/${post.id}`}><h2>{post.id} .  {post.title}</h2></Link>
+            <li className="underline mb-5 underline-offset-4 marker:text-white" key={post.id}>
+              <Link href={`/blog/${post.id}`} className="text-white"><h2>{post.id} .  {post.title}</h2></Link>
             </li>
           ))}
         </ul>
