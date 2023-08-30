@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   
 
@@ -8,6 +10,7 @@ export default function Home() {
         <p className="text-white">I am Md. Zahidul Islam, Currently I am working as a software engineer in BrandCloud Inc.</p>
         
       <div className="p-10 justify-center">
+      <div><Link href="/read" className="text-white">read</Link></div>
        
         <button  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-10" onClick={"/api/cookie/set"}> Set cookie</button>
         </div>
