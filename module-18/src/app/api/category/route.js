@@ -7,16 +7,13 @@ export async function POST(req,res) {
     } 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.posts.create({
-           data: {            
-            author_id:1,             
-            parent_id:1,             
-            title:"Fist post",                
-            metaTitle:"new post",           
-            slug:"a",                
-            summary:"b",              
-            published:11,            
-            content:"d",       
+        const result = await prisma.categories.create({
+           data: { 
+            parent_id:1, 
+            title:"Facebook",  
+            metaTitle:"post",
+            slug:"love",       
+            content:"dfadf asd asdf fasd asdfasdfaf f",            
             }
           })
         console.log(result)
@@ -36,11 +33,11 @@ export async function GET(req,res) {
     try {
         const prisma = new PrismaClient()
         //Read all data
-        //const result = await prisma.posts.findMany();
+        //const result = await prisma.categories.findMany();
         //Read data with condition
-        const result = await prisma.posts.findMany({
-            where : {id: 1},
-             select: {id:true, author_id:true, parent_id:true, title:true, metaTitle:true, slug:true, summary:true, published:true, content:true}
+        const result = await prisma.categories.findMany({
+            where : {id: 2},
+             select: {id:true, parent_id:true,  title:true, metaTitle:true, slug:true, content:true}
         }
         );
         console.log(result)
@@ -60,7 +57,7 @@ export async function DELETE(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.posts.delete({
+        const result = await prisma.categories.delete({
             where : {id:3}
         }
         );
@@ -81,7 +78,7 @@ export async function PUT(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.posts.update({
+        const result = await prisma.categories.update({
             where : {id:2},
             data: {
                     metaTitle:"Testing Update",
