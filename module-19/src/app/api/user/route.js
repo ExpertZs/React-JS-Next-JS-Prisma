@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+//Transactions & Rollback
 export async function POST(req,res) {
     BigInt.prototype.toJSON =function(){
         return this.toString();
@@ -8,19 +9,36 @@ export async function POST(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const newUser = await prisma.users.create({
-           data: {
-            firstName:"Md.", 
-            middleName: "saidul",         
-            lastName :"Islam",            
-            mobile  : "O1754898514" ,            
-            email    : "said.engineer1@gmail.com" ,           
-            password  : "66146656"  ,     
-            admin        : "admin1" ,            
-              }
-          })
-        console.log(newUser)
-        return await  NextResponse.json({status:"success",data:newUser})
+
+        const last_user_id = await prisma.users.findFirst(
+          {orderBy:{id:"desc"}}
+      );
+      const user_id_last=last_user_id.id+1n;
+      // console.log(user_id_last)
+        const createUser = prisma.users.create({
+          data:{ firstName:"Md.", 
+                      middleName: "Zahidul",         
+                      lastName :"Islam",            
+                      mobile  : "O1754898514" ,            
+                      email    : "zs.engineer2@gmail.com" ,           
+                      password  : "66146656"  ,     
+                      admin        : "admin1" ,  }
+        })
+
+        const createProduct=prisma.products.create({
+          data:{ firstName:"laptop",  
+          metaTitle: "Phone",         
+          slug :"bb",            
+          summary  : "summary" ,            
+          price    : 200 ,           
+          discount  : 10  ,     
+          user_id:user_id_last  }
+        })
+
+      const result=await prisma.$transaction([createUser, createProduct])
+      console.log(result)
+      return NextResponse.json({ status: "success", data: result });
+      
        }
     
     catch(err){
@@ -28,6 +46,35 @@ export async function POST(req,res) {
     }
 
 }
+//create new user
+
+// export async function POST(req,res) {
+//   BigInt.prototype.toJSON =function(){
+//       return this.toString();
+//   }
+
+//   try {
+//       const prisma = new PrismaClient()
+//       const newUser = await prisma.users.create({
+//          data: {
+//           firstName:"Md.", 
+//           middleName: "asadul",         
+//           lastName :"Islam",            
+//           mobile  : "O1754898514" ,            
+//           email    : "said.engineer1@gmail.com" ,           
+//           password  : "66146656"  ,     
+//           admin        : "admin1" ,            
+//             }
+//         })
+//       console.log(newUser)
+//       return await  NextResponse.json({status:"success",data:newUser})
+//      }
+  
+//   catch(err){
+//      return NextResponse.json({status:"fail", data:err.toString()});
+//   }
+
+// }
 export async function GET(req,res) {
     BigInt.prototype.toJSON =function(){
         return this.toString();

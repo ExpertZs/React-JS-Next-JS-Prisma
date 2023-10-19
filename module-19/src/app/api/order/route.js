@@ -48,11 +48,22 @@ export async function GET(req,res) {
         //const result = await prisma.orders.findMany();
 
         //Read data with condition
-        const result = await prisma.orders.findMany({
-            where : {id: 1},
-             select: {id:true, title : true,firstName:true , middleName:true, lastName:true, mobile:true, email:true, user_id:true,sub_total:true,token:true, tax:true, city:true, country:true,total:true,discount:true,grand_total:true,item_discount:true,}
-        }  
-        );
+
+        // const result = await prisma.orders.findMany({
+        //     where : {id: 1},
+        //      select: {id:true, title : true,firstName:true , middleName:true, lastName:true, mobile:true, email:true, user_id:true,sub_total:true,token:true, tax:true, city:true, country:true,total:true,discount:true,grand_total:true,item_discount:true,}
+        // }  
+        // );
+
+        //   aggregate, _avg, _count, groupBy, _max, _sum
+        const result = await prisma.orders.groupBy({
+            _avg: { total: true },
+            _count: { total: true },
+            _max: { total: true },
+            _sum: { total: true },
+            by: ["city"],
+      });
+      
         console.log(result)
         return await  NextResponse.json({status:"success", data:result})
        }
