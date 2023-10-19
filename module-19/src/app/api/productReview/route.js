@@ -8,19 +8,16 @@ export async function POST(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const newProduct = await prisma.products.create({
+        const newProductReview = await prisma.product_reviews.create({
            data: {
-            firstName:"Mobile", 
-            metaTitle: "Phone",         
-            slug :"aa",            
-            summary  : "summary" ,            
-            price    : 200 ,           
-            discount  : 10  ,     
-            user_id   : 1 ,            
+            title:"Electronics", 
+            product_id: 1,         
+            rating :"4.88",            
+            content  : "summary" ,                      
               }
           })
-        console.log(newProduct)
-        return await  NextResponse.json({status:"success",data:newProduct})
+        console.log(newProductReview)
+        return await  NextResponse.json({status:"success",data:newProductReview})
        }
     
     catch(err){
@@ -36,12 +33,12 @@ export async function GET(req,res) {
     try {
         const prisma = new PrismaClient()
         //Read all data
-        //const result = await prisma.products.findMany();
+        //const result = await prisma.product_reviews.findMany();
 
         //Read data with condition
-        const result = await prisma.products.findMany({
+        const result = await prisma.product_reviews.findMany({
             where : {id: 1},
-             select: {id:true, firstName:true , metaTitle:true, slug:true, summary:true, price:true, discount:true,user_id:true,}
+             select: {id:true, title:true , product_id:true, rating:true, content:true,}
         }   
         );
         console.log(result)
@@ -61,7 +58,7 @@ export async function DELETE(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.products.delete({
+        const result = await prisma.product_reviews.delete({
             where : {id:2}
         }
         );
@@ -82,7 +79,7 @@ export async function PUT(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.products.update({
+        const result = await prisma.product_reviews.update({
             where : {id:3},
             data: {
                     metaTitle: "Mobile Phone",

@@ -8,19 +8,24 @@ export async function POST(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const newProduct = await prisma.products.create({
+        const newCart = await prisma.carts.create({
            data: {
-            firstName:"Mobile", 
-            metaTitle: "Phone",         
-            slug :"aa",            
-            summary  : "summary" ,            
-            price    : 200 ,           
-            discount  : 10  ,     
-            user_id   : 1 ,            
+            title: "A",
+            session_id: "string",
+            token: "string",
+            status: "string",
+            firstName:"I", 
+            middleName: " ",         
+            lastName :"Phone",            
+            mobile  : "O1754898514" ,            
+            email    : "said.engineer1@gmail.com" ,           
+            city  : "Dhaka"  , 
+            country: "Bangladesh",   
+            user_id        : 1 ,            
               }
           })
-        console.log(newProduct)
-        return await  NextResponse.json({status:"success",data:newProduct})
+        console.log(newCart)
+        return await  NextResponse.json({status:"success",data:newCart})
        }
     
     catch(err){
@@ -36,13 +41,13 @@ export async function GET(req,res) {
     try {
         const prisma = new PrismaClient()
         //Read all data
-        //const result = await prisma.products.findMany();
+        //const result = await prisma.carts.findMany();
 
         //Read data with condition
-        const result = await prisma.products.findMany({
+        const result = await prisma.carts.findMany({
             where : {id: 1},
-             select: {id:true, firstName:true , metaTitle:true, slug:true, summary:true, price:true, discount:true,user_id:true,}
-        }   
+             select: {id:true, title : true,firstName:true , middleName:true, lastName:true, mobile:true, email:true, user_id:true,session_id:true,token:true, status:true, city:true, country:true,}
+        }  
         );
         console.log(result)
         return await  NextResponse.json({status:"success", data:result})
@@ -61,7 +66,7 @@ export async function DELETE(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.products.delete({
+        const result = await prisma.carts.delete({
             where : {id:2}
         }
         );
@@ -82,11 +87,11 @@ export async function PUT(req,res) {
 
     try {
         const prisma = new PrismaClient()
-        const result = await prisma.products.update({
+        const result = await prisma.carts.update({
             where : {id:3},
             data: {
-                    metaTitle: "Mobile Phone",
-                    slug: "product",
+                    mobile: "01642319326",
+                    lastName: "Mobile",
                   },
         }
         );
