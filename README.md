@@ -1,1 +1,0 @@
-# React-JS-Next-JS-Prisma
